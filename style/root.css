@@ -1,0 +1,17 @@
+@import url("/style/universal.css");
+
+img {
+  width: 128px;
+  height: 128px;
+}
+
+@media only screen and (max-width: 480px) {
+  img {
+    width: 96px;
+    height: 96px;
+  }
+
+  li {
+    line-height: 1.2rem;
+  }
+}

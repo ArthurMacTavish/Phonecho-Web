@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Phonecho</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style/universal.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- iOS PWA -->
+    <link rel="apple-touch-icon" href="/pwa/192.png" />
+    <link rel="apple-touch-icon" href="/pwa/512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#262e27" />
+    <meta name="theme-color" content="#7bff63" />
+</head>
+
+<body class="bg-primary">
+    <div class="island noscript">
+        <h1>404 - Not Found</h1>
+        <div class="textgroup">
+            <img src="assets/not_available.png">
+            <p style="opacity: 0.75;"><i>Credit goes to Randall Munroe (<a href="https://xkcd.com/1969"
+                        target="_blank">https://xkcd.com/1969</a>)<br>Licensed under CC BY-NC 2.5</i></p>
+        </div>
+        <p>I see, you lost right?<br>Go back to the homepage and you should good to go!</p>
+        <noscript>
+            <p><i>p.s. seriously, enable your javascript. don't know how? there will be an instruction on how to do
+                    so.</i></p>
+        </noscript>
+        <a href="/">
+            <button>
+                <span><b>Go back to homepage.</b></span>
+            </button>
+        </a>
+    </div>
+    <script>
+        // SW
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(res => console.log("service worker registered"))
+                    .catch(err => console.log("service worker not registered", err))
+            })
+        }
+    </script>
+</body>
+
+</html>

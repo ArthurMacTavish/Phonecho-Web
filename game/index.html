@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Phonecho</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style/game.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- iOS PWA -->
+    <link rel="apple-touch-icon" href="/pwa/192.png" />
+    <link rel="apple-touch-icon" href="/pwa/512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#262e27" />
+    <meta name="theme-color" content="#7bff63" />
+</head>
+
+<body class="bg-primary">
+    <noscript>
+        <div class="island noscript">
+            <div class="textgroup">
+                <h1>Hello there!</h1>
+                <p>Phonecho, unfortunately requires JavaScript. But don't fret, here's some simple guideline to enable
+                    JS back!</p>
+            </div>
+
+            <div class="textgroup">
+                <h3>Gecko-based browsers (Firefox, Zen Browser, LibreWolf, etc.)</h3>
+                <ol>
+                    <li>Type <code>about:config</code> in the address bar</li>
+                    <li>Accept the warning if shown</li>
+                    <li>Search for <code>javascript.enabled</code> and toggle it to <code>true</code></li>
+                </ol>
+            </div>
+
+            <div class="textgroup">
+                <h3>Chromium-based browsers (Chrome, Edge, Brave, Opera, etc.)</h3>
+                <ol>
+                    <li>Click the 3-dot menu (top-right corner)</li>
+                    <li>Go to <strong>Settings</strong> → <strong>Privacy and security</strong></li>
+                    <li>Click <strong>Site Settings</strong></li>
+                    <li>Scroll down to <strong>Content</strong> → Click <strong>JavaScript</strong></li>
+                    <li>Set to <code>Sites can use JavaScript</code> (the recommended default)</li>
+                </ol>
+            </div>
+
+            <div class="textgroup">
+                <h3>Friendly Reminder</h3>
+                <p>You might also unintentionally disabled JS for this site through Extensions or if you use Brave, you
+                    might enable <b>Block Script</b>
+                    through Brave Shield.
+                    If
+                    so, disable such JS blocking.</p>
+            </div>
+        </div>
+    </noscript>
+    <form onsubmit="checkWord(); return false;" class="island" id="withscript">
+        <h1 id="emoji" class="fade">.</h1>
+        <h1 id="word" class="fade">.</h1>
+        <input type="text" id="answer" placeholder="Answer Here">
+        <button type="submit">
+            <span><b>Input Answer</b></span>
+        </button>
+    </form>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(res => console.log("service worker registered"))
+                    .catch(err => console.log("service worker not registered", err))
+            })
+        }
+
+        // Pops up the Anti-NoScript Island thingy
+        document.getElementById("withscript").removeAttribute("id")
+    </script>
+    <script src="/assets/dictionary/agentChecker.js" />
+</body>
+
+</html>

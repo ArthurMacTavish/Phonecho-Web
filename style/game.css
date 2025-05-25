@@ -1,0 +1,49 @@
+@import url("/style/universal.css");
+
+img {
+  width: 128px;
+  height: 128px;
+}
+
+.island {
+  gap: 1.5rem;
+}
+
+#emoji {
+  font-size: 3rem;
+}
+
+.fade {
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
+/* JS Script for Correct/Wrong Answer */
+.correct {
+  background-color: #00ff66;
+}
+.false {
+  background-color: #ff0000;
+}
+body {
+  transition: 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 480px) {
+  img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .island {
+    gap: 1rem;
+  }
+
+  #emoji {
+    font-size: 2.5rem;
+  }
+}
